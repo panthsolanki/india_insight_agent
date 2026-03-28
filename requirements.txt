@@ -1,0 +1,6 @@
+google-adk==1.27.1
+fastapi
+uvicorn
+requests
+python-dotenv
+fastmcp
