@@ -1,43 +1,35 @@
 from google.adk.agents import LlmAgent
 from google.adk.tools import tool
-
-from mcp_client import get_cpi, get_gdp, get_employment
-
+from mcp_wrapper import mcp_wrapper
 
 @tool
-def fetch_inflation():
-    """Fetch inflation (CPI) data"""
-    return get_cpi()
-
-
-@tool
-def fetch_gdp():
-    """Fetch GDP data"""
-    return get_gdp()
-
-
-@tool
-def fetch_employment():
-    """Fetch employment data"""
-    return get_employment()
+def fetch_india_data(query: str):
+    """
+    Explore datasets and fetch relevant India development data
+    """
+    return mcp_wrapper.query(query)
 
 
 agent = LlmAgent(
     name="india_dev_agent",
     instruction="""
-You explain India's development in very simple English.
+    You explain India's development in very simple English.
 
-Rules:
-- ALWAYS use tools to get real data
-- Choose correct tool:
-  - fetch_inflation → inflation
-  - fetch_gdp → growth
-  - fetch_employment → jobs
+    Process:
+    1. ALWAYS call fetch_india_data
+    2. Use selected_dataset to understand context:
+    - CPI → inflation
+    - GDP → economic growth
+    - PLFS → employment
 
-- Then:
-  1. Identify trend
-  2. Explain in simple terms
-  3. Keep under 5 sentences
-""",
-    tools=[fetch_inflation, fetch_gdp, fetch_employment],
+    3. Explain:
+    - What is happening
+    - Why it matters to people
+
+    Rules:
+    - Keep under 5 sentences
+    - No jargon
+    - Be clear and simple
+    """,
+    tools=[fetch_india_data],
 )
