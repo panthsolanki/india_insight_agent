@@ -1,9 +1,3 @@
-Since you are a **Frontend Engineer**, you probably appreciate a README that is not only functional but also visually structured and "scannable." 
-
-Here is a professionally formatted `README.md` for the **India Insight Agent**. I've added a **"Quick Start"** section and a **"Deployment"** guide specifically tailored to the `uv` and **Cloud Run** workflow we built.
-
----
-
 # 🇮🇳 India Insight Agent
 
 An AI-powered analytical engine that connects directly to the **Ministry of Statistics and Programme Implementation (MoSPI)** via the **Model Model Context Protocol (MCP)**. This agent fetches live development data and provides deep, data-driven insights into India's growth sectors.
